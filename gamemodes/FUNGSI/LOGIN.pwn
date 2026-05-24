@@ -4,6 +4,8 @@ forward CekVerifikasiAkun(playerid);
 
 // cek verifikasi akun pemain
 public CekVerifikasiAkun(playerid) {
+  
+  // ambil data akun
   cache_get_value_int(0, "id", Pemain[playerid][pId]);
   cache_get_value_int(0, "verified", Pemain[playerid][pVerified]);
   cache_get_value_int(0, "kode", Pemain[playerid][pKode]);
@@ -32,7 +34,7 @@ public CekVerifikasiAkun(playerid) {
      Pemain[playerid][pNama]
     );
     
-    ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_INPUT,
+    ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_PASSWORD,
      "{CD7000}Detroit {FFFFFF}Roleplay - Account Login",
      str,
      "Kirim", "Batal"
@@ -43,7 +45,9 @@ public CekVerifikasiAkun(playerid) {
 
 // cek akun pemain
 public CekAkunPemain(playerid) {
-  if(!IsPlayerConnected(playerid)) return 1;
+  if(!IsPlayerConnected(playerid)) {
+    return 1;
+  }
   
   if(cache_num_rows() > 0) {
     new query[256];
@@ -55,5 +59,21 @@ public CekAkunPemain(playerid) {
     
     return 1;
   }
+  
+  // tidak ada akun/Data
+  new nama[MAX_PLAYERS][MAX_PLAYER_NAME];
+  GetPlayerName(playerid, nama[playerid], MAX_PLAYER_NAME);
+  
+  new str[256];
+  format(str, sizeof(str), "UCP {e516fd}%s {ffffff}belum terdaftar, silahkan daftarkan\n\nakun anda di discord kami.", nama[MAX_PLAYER_NAME]);
+  
+  ShowPlayerDialog(playerid, DIALOG_UNUSED, DIALOG_STYLE_MSGBOX,
+   "{CD7000}Detroit {FFFFFF}Roleplay - Account Information",
+   str,
+   "Kembali", " "
+  );
+  
+  SetTimerEx("KickPemain", 5000, false, "i", playerid);
+  
   return 1;
 }

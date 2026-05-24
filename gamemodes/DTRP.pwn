@@ -18,7 +18,9 @@
 #include "DATA/DEFINE.pwn"
 #include "DATA/ENUM.pwn"
 #include "FUNGSI/PESAN.pwn"
+#include "FUNGSI/KICK.pwn"
 #include "FUNGSI/LOGIN.pwn"
+#include "FUNGSI/DIALOG.pwn"
 
 //===[OnGameModeInit]===//
 
@@ -42,7 +44,7 @@ public OnPlayerConnect(playerid) {
   // ambil nama
   GetPlayerName(playerid, Pemain[playerid][pNama], MAX_PLAYER_NAME);
   ///////////////////////////////////////////////////////////////////
-  
+  SendMessageServer(playerid, "Selamat datang di server Detroit Roleplay.");
   SendMessageServer(playerid, "Akun kamu sedang kami proses");
   
   // cek akun player
