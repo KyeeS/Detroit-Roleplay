@@ -1,0 +1,6 @@
+CREATE TABLE Pemain (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nama VARCHAR(255) NOT NULL,
+    verified INT DEFAULT 0,
+    kode INT
+);
