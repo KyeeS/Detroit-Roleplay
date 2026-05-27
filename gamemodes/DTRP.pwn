@@ -13,6 +13,7 @@
 #include <sscanf2>
 #include <streamer>
 #include <a_mysql>
+#include <samp_bcrypt>
 
 //===[MODULES]===//
 #include "DATA/header.inc" 
@@ -57,14 +58,20 @@ public OnPlayerConnect(playerid) {
   return 1;
 }
 
-public OnPlayerRequestSpawn(playerid) 
-{
+public OnPlayerRequestSpawn(playerid) {
+  if(StatusLogin[playerid] == false) {
+    SendMessageError(playerid, "Login dulu, baru bisa spawn");
+    return 1;
+  }
   return 0;
 }
 
-public OnPlayerDisconnect(playerid, reason) 
-{
-  ResetVariabelPlayer(playerid);
-  SaveAccounts(playerid);
+public OnPlayerDisconnect(playerid, reason) {
+  new blah[256];
+  format(blah, sizeof(blah), "{59ff28}[SERVER]{fff000} %s {ffffff}meninggalkan server.", Pemain[playerid][pNama]);
+  SendClientMessageToAll(0xffffff, blah);
+  
+  // save data
+  SimpanDataPemain(playerid);
   return 1;
 }
