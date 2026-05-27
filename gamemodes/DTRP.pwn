@@ -57,10 +57,14 @@ public OnPlayerConnect(playerid) {
   return 1;
 }
 
-public OnPlayerRequestSpawn(playerid) {
+public OnPlayerRequestSpawn(playerid) 
+{
   return 0;
 }
 
-public OnPlayerDisconnect(playerid, reason) {
+public OnPlayerDisconnect(playerid, reason) 
+{
+  ResetVariabelPlayer(playerid);
+  SaveAccounts(playerid);
   return 1;
 }
