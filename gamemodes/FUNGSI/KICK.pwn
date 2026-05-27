@@ -1,6 +1,4 @@
-forward KickPemain(playerid);
-
-public KickPemain(playerid) {
+Fungsi:KickPemain(playerid) {
   if(!IsPlayerConnected(playerid)) {
     return 1;
   }

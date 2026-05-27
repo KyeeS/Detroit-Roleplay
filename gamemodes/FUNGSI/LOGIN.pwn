@@ -1,12 +1,5 @@
-// definisi fungsi login
-forward CekAkunPemain(playerid);
-forward CekVerifikasiAkun(playerid);
-forward OnSetGender(playerid);
-forward MuatDataLogin(playerid);
-forward SpawnPemainEx(playerid);
-
 // fungsi spawn pemain
-public SpawnPemainEx(playerid) {
+Fungsi: SpawnPemainEx(playerid) {
   // login
   if(TipeLogin[playerid] == 0) {
     
@@ -60,7 +53,7 @@ public SpawnPemainEx(playerid) {
 }
 
 // load data login
-public MuatDataLogin(playerid) {
+Fungsi: MuatDataLogin(playerid) {
   
   cache_get_value_int(0, "gender", Pemain[playerid][pGender]);
   cache_get_value_int(0, "skin", Pemain[playerid][pSkin]);
@@ -85,7 +78,7 @@ public MuatDataLogin(playerid) {
 }
 
 // set gender
-public OnSetGender(playerid) {
+Fungsi: OnSetGender(playerid) {
   new query[256];
   mysql_format(g_SQL, query, sizeof(query), "UPDATE Pemain SET verified=1, sandi='%e', gender='%d' WHERE id='%d'",
   pwbaru[playerid], gender[playerid], Pemain[playerid][pId]);
@@ -102,7 +95,7 @@ public OnSetGender(playerid) {
 }
 
 // cek verifikasi akun pemain
-public CekVerifikasiAkun(playerid) {
+Fungsi: CekVerifikasiAkun(playerid) {
   
   // ambil data akun
   cache_get_value_int(0, "id", Pemain[playerid][pId]);
@@ -143,7 +136,7 @@ public CekVerifikasiAkun(playerid) {
 }
 
 // cek akun pemain
-public CekAkunPemain(playerid) {
+Fungsi: CekAkunPemain(playerid) {
   if(!IsPlayerConnected(playerid)) {
     return 1;
   }
