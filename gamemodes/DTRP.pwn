@@ -44,6 +44,7 @@ public OnGameModeInit() {
 }
 
 public OnPlayerConnect(playerid) {
+  SetPlayerColor(playerid, 0xFFFFFF);
   // ambil nama
   GetPlayerName(playerid, Pemain[playerid][pNama], MAX_PLAYER_NAME);
   ///////////////////////////////////////////////////////////////////

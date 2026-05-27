@@ -2,7 +2,6 @@
 forward CekAkunPemain(playerid);
 forward CekVerifikasiAkun(playerid);
 forward OnSetGender(playerid);
-forward PemainSetData(playerid);
 forward MuatDataLogin(playerid);
 forward SpawnPemainEx(playerid);
 
@@ -10,11 +9,49 @@ forward SpawnPemainEx(playerid);
 public SpawnPemainEx(playerid) {
   // login
   if(TipeLogin[playerid] == 0) {
-  
+    
+    SetPlayerInterior(playerid, PosisiPemain[playerid][int]);
+    
+    SetPlayerPos(playerid,
+     PosisiPemain[playerid][x],
+     PosisiPemain[playerid][z],
+     PosisiPemain[playerid][z]
+    );
+    
+    SetPlayerFacingAngle(playerid, PosisiPemain[playerid][angel]);
+    
+    SetPlayerHealth(playerid, Pemain[playerid][pNyawa]);
+    SetPlayerArmour(playerid, Pemain[playerid][pArmor]);
+    
+    SetPlayerSkin(playerid, Pemain[playerid][pSkin]);
+    
+    SendMessageInfo(playerid, "Selamat datang kembali di server Detroit Roleplay");
+    
     return 1;
   }
   // register
   if(TipeLogin[playerid] == 1) {
+    
+    SetPlayerInterior(playerid, 0);
+    
+    SetPlayerPos(playerid,
+     DefaultPos[x],
+     DefaultPos[y],
+     DefaultPos[z]
+    );
+    
+    SetPlayerFacingAngle(playerid, DefaultPos[angel]);
+    
+    SetPlayerHealth(playerid, 100.0);
+    
+    if(gender[playerid] == 1) {
+      SetPlayerSkin(playerid, DefaultSkin[pria]);
+    }
+    if(gender[playerid] == 2) {
+      SetPlayerSkin(playerid, DefaultSkin[wanita]);
+    }
+    
+    SendMessageInfo(playerid, "Selamat datang di server Detroit Roleplay");
     
     return 1;
   }
@@ -35,15 +72,14 @@ public MuatDataLogin(playerid) {
   cache_get_value_name_float(0, "posz", PosisiPemain[playerid][z]);
   cache_get_value_name_float(0, "angel", PosisiPemain[playerid][angel]);
   
+  cache_get_value_name_float(0, "nyawa", Pemain[playerid][pNyawa]);
+  cache_get_value_name_float(0, "armor", Pemain[playerid][pArmor]);
+  
+  cache_get_value_int(0, "interior", PosisiPemain[playerid][int]);
+  
   TipeLogin[playerid] = 0;
   
   SpawnPemainEx(playerid);
-  
-  return 1;
-}
-
-// setelah player set data
-public PemainSetData(playerid) {
   
   return 1;
 }
@@ -53,10 +89,14 @@ public OnSetGender(playerid) {
   new query[256];
   mysql_format(g_SQL, query, sizeof(query), "UPDATE Pemain SET verified=1, sandi='%e', gender='%d' WHERE id='%d'",
   pwbaru[playerid], gender[playerid], Pemain[playerid][pId]);
-  mysql_tquery(g_SQL, query, "PemainSetData","i", playerid);
   
   // set status login
   StatusLogin[playerid] = true;
+  
+  TipeLogin[playerid] = 1;
+  
+  // spawn player
+  mysql_tquery(g_SQL, query, "SpawnPemainEx","i", playerid);
   
   return 1;
 }

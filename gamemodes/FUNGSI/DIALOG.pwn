@@ -9,7 +9,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
       SHA256_Hash(inputtext, "DELFIN", hashpw, sizeof(hashpw));
       
       if(strcmp(hashpw, Pemain[playerid][pPassword], true) == 0) {
-        SendMessageServer(playerid, "Pssword benar, selamat bermain");
+        SendMessageServer(playerid, "Password benar, selamat bermain");
         // ubah variabel status login
         StatusLogin[playerid] = true;
         
@@ -18,7 +18,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
         SendClientMessageToAll(0xffffff, blah);
         
         new data[512];
-        mysql_format(g_SQL, data, sizeof(data), "SELECT gender, skin, posx, posy, posz, angel, level FROM Pemain WHERE id='%d'",
+        mysql_format(g_SQL, data, sizeof(data), "SELECT gender, skin, posx, posy, posz, interior, nyawa, armor, angel, level FROM Pemain WHERE id='%d'",
         Pemain[playerid][pId]);
         mysql_tquery(g_SQL, data, "MuatDataLogin", "i", playerid);
         
@@ -56,7 +56,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
       
       // kode benar
       if(inputkode == Pemain[playerid][pKode]) {
-        SendMessageServer(playerid, "Kode vertifikasi benar, silahkan buat password anda!");
+        SendMessageServer(playerid, "Kode verifikasi benar, silahkan buat password anda!");
         
         new str[256];
         format(str, sizeof(str), "Silahkan masukkan password akun baru anda!");

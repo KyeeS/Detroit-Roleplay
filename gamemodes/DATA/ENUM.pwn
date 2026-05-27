@@ -7,7 +7,9 @@ enum DataPemain {
   pPassword[256],
   pGender,
   pSkin,
-  pLevel
+  pLevel,
+  Float:pNyawa,
+  Float:pArmor
 };
 
 new Pemain[MAX_PLAYERS][DataPemain];
@@ -17,7 +19,8 @@ enum PosisiPlayer {
   Float:x,
   Float:y,
   Float:z,
-  Float:angel
+  Float:angel,
+  int
 };
 
 new PosisiPemain[MAX_PLAYERS][PosisiPlayer];
@@ -31,3 +34,21 @@ enum {
   DIALOG_LOGIN,
   DIALOG_GENDER
 };
+
+// posisi default
+enum DPos {
+  Float:x = 0.0,
+  Float:y = 0.0,
+  Float:z = 0.0,
+  Float:angel = 0.0
+}
+
+new DefaultPos[DPos];
+
+// skin default
+enum DSkin {
+  pria = 147,
+  wanita = 150
+}
+
+new DefaultSkin[DSkin];

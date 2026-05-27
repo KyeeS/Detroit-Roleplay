@@ -10,5 +10,8 @@ CREATE TABLE Pemain (
     posy FLOAT,
     posz FLOAT,
     angle FLOAT,
+    interior INT DEFAULT 0,
+    nyawa FLOAT,
+    armor FLOAT,
     level INT DEFAULT 1
 );
