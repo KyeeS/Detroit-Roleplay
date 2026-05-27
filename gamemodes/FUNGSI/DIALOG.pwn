@@ -96,7 +96,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[]) {
     if(response == 1) {
       
       // hash pw 
-      SHA256_Hash(inputtext, "DELFIN", pwbaru[playerid], sizeof(pwbaru[playerid]));
+      SHA256_Hash(inputtext, "DELFIN", pwbaru[playerid], sizeof(pwbaru[]));
       
       ShowPlayerDialog(playerid, DIALOG_GENDER, DIALOG_STYLE_LIST,
        "{CD7000}Detroit {FFFFFF}Roleplay - Account Creation Gender",

@@ -5,6 +5,7 @@
 • Delfin Ibn Kadafi - Founder and Scripter
 • Panntzyy - Scripter
 • Martin - Scripter (Then)
+* Enkgq - Scripter (Three)
 */
 
 //===[INCLUDE]===//
@@ -12,17 +13,10 @@
 #include <sscanf2>
 #include <streamer>
 #include <a_mysql>
-#include <samp_bcrypt>
 
 //===[MODULES]===//
-#include "DATA/VARIABLE.pwn"
-#include "DATA/DEFINE.pwn"
-#include "DATA/ENUM.pwn"
-
-#include "FUNGSI/PESAN.pwn"
-#include "FUNGSI/KICK.pwn"
-#include "FUNGSI/LOGIN.pwn"
-#include "FUNGSI/DIALOG.pwn"
+#include "DATA/header.inc" 
+#include "FUNGSI/header.inc"
 
 //===[OnGameModeInit]===//
 
