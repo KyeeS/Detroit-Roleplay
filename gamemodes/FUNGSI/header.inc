@@ -1,4 +1,5 @@
 #include "FUNGSI/PESAN.pwn"
 #include "FUNGSI/KICK.pwn"
+#include "FUNGSI/PLAYERS.pwn"
 #include "FUNGSI/LOGIN.pwn"
 #include "FUNGSI/DIALOG.pwn"
