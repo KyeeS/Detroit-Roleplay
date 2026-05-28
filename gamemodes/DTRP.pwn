@@ -24,7 +24,7 @@ main(){}
 
 public OnGameModeInit() 
 {
-    g_SQL = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
+    g_SQL = mysql_connect_file();
     if(g_SQL == MYSQL_INVALID_HANDLE || mysql_errno(g_SQL) != 0) 
     {
       printf("[MySQL] Telah terjadi kesalahan saat menghubungkan koneksi mysql. (#%d)", mysql_errno(g_SQL));
@@ -32,7 +32,7 @@ public OnGameModeInit()
       return 0;
     }
 
-    printf("[MySQL] Koneksi BERHASIL ke database '%s' (Handle: %d)", MYSQL_DATABASE, _:g_SQL);
+    printf("[MySQL] Koneksi mysql berhasil terhubung dengan baik.");
     mysql_set_charset("utf8mb4", g_SQL);
     SetGameModeText(SERVER_VERSION);
     DisableInteriorEnterExits();
