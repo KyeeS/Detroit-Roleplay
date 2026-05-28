@@ -22,11 +22,11 @@
 
 //===[OnGameModeInit]===//
 
-public OnGameModeInit() {
-    SetGameModeText(server_version);
-
+public OnGameModeInit() 
+{
     g_SQL = mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE);
-    if(mysql_errno(g_SQL) != 0) {
+    if(mysql_errno(g_SQL) != 0) 
+    {
         print("[MySQL] Koneksi GAGAL!");
         SendRconCommand("exits");
         return 0;
@@ -34,9 +34,8 @@ public OnGameModeInit() {
 
     printf("[MySQL] Koneksi BERHASIL ke database '%s' (Handle: %d)", MYSQL_DATABASE, _:g_SQL);
     mysql_set_charset("utf8mb4", g_SQL);
-    
+    SetGameModeText(SERVER_VERSION);
     DisableInteriorEnterExits();
-    
     return 1;
 }
 

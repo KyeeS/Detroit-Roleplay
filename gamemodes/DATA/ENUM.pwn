@@ -35,8 +35,8 @@ enum {
   DIALOG_GENDER
 };
 
-// posisi default
-enum DPos {
+enum DPos 
+{
   Float:x = 0.0,
   Float:y = 0.0,
   Float:z = 0.0,

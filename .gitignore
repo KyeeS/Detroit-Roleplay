@@ -6,4 +6,4 @@
 *.log
 
 # others
-.gamemodes/*.amx
+gamemodes/DTRP.amx
