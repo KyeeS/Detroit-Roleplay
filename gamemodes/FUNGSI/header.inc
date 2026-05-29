@@ -1,4 +1,5 @@
 #include "FUNGSI/PESAN.pwn"
+#include "FUNGSI/ANTI_SPAM.pwn"
 #include "FUNGSI/WRAPPER.pwn"
 #include "FUNGSI/DATA_PEMAIN.pwn"
 #include "FUNGSI/REGISTER.pwn"

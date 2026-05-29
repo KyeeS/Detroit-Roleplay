@@ -24,6 +24,11 @@ public OnPlayerText(playerid, text[]) {
     return 1;
   }
   
+  if(Mute[playerid] == true) {
+    SendMessageError(playerid, "Kamu sedang dibisukan!");
+    return 1;
+  }
+  
   new msg[256];
   format(msg, sizeof(msg), "%s says: %s", Pemain[playerid][pNama], text);
   
@@ -44,6 +49,10 @@ public OnPlayerText(playerid, text[]) {
     else if (d <= radius)
       SendClientMessage(i, 0xAAAAAAFF, text);
   }
+  
+  SendClientMessage(playerid, 0xFFFFFFFF, text);
+  
+  AntiSpam(playerid);
   
   return 1;
 }
