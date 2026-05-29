@@ -15,7 +15,10 @@ stock SpawnPemainEx(playerid, bool:new_player = false)
       PosisiPemain[playerid][pY],
       PosisiPemain[playerid][pZ],
       PosisiPemain[playerid][pAngle]
-    );    
+    );
+    
+    StatusLogin[playerid] = true;
+    
   }
   else 
   {
@@ -31,7 +34,9 @@ stock SpawnPemainEx(playerid, bool:new_player = false)
     );    
     SetPlayerScore(playerid, 1);
   }
-
+  
+  StatusLogin[playerid] = true;
+  
   ShowGreetings(playerid);
   SpawnPlayer(playerid);
   return 1;

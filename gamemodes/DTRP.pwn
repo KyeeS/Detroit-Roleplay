@@ -7,6 +7,7 @@
 #include <samp_bcrypt>
 #include <easyDialog>
 #include <zcmd>
+#include <foreach>
 
 
 // local includes
@@ -33,6 +34,7 @@ public OnGameModeInit()
     return 1;
 }
 
+// connect/disconnect
 public OnPlayerConnect(playerid) 
 {
   SetPlayerColor(playerid, 0xFFFFFFFF);
@@ -58,6 +60,7 @@ public OnPlayerDisconnect(playerid, reason)
   ResetDataPemain(playerid);
   return 1;
 }
+//////////////////////////////////////////////////////////////////////////
 
 public OnPlayerRequestSpawn(playerid) 
 {

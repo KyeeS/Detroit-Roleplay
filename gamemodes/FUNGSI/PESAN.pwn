@@ -17,3 +17,33 @@ stock ShowGreetings(playerid)
 	SendMessageServer(playerid, "Halo %s, selamat datang di %s", Pemain[playerid][pNama], SERVER_NAME);
 	return 1;
 }
+
+public OnPlayerText(playerid, text[]) {
+  if(StatusLogin[playerid] == false) {
+    SendMessageError(playerid, "Kamu harus login agar bisa mengirim pesan!");
+    return 1;
+  }
+  
+  new msg[256];
+  format(msg, sizeof(msg), "%s says: %s", Pemain[playerid][pNama], text);
+  
+  new Float:px, Float:py, Float:pz;
+  GetPlayerPos(playerid, px, py, pz);
+
+  // radius chat
+  new Float:radius = 20.0;
+
+  foreach (new i : Player) {
+  
+    new Float:d = GetPlayerDistanceFromPoint(i, px, py, pz);
+
+    if (d <= radius / 4)
+      SendClientMessage(i, 0xFFFFFFFF, text);
+    else if (d <= radius / 2)
+      SendClientMessage(i, 0xDDDDDDFF, text);
+    else if (d <= radius)
+      SendClientMessage(i, 0xAAAAAAFF, text);
+  }
+  
+  return 1;
+}
